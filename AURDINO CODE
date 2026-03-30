@@ -1,0 +1,19 @@
+int devicePin = 7;  // Relay or LED pin
+
+void setup() {
+  pinMode(devicePin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char command = Serial.read();
+
+    if (command == '1') {
+      digitalWrite(devicePin, HIGH);  // Turn ON device
+    }
+    else if (command == '0') {
+      digitalWrite(devicePin, LOW);   // Turn OFF device
+    }
+  }
+}
